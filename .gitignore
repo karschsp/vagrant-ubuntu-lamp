@@ -1,0 +1,4 @@
+.vagrant
+.DS_Store
+files/httpd/vhosts/*.local.conf
+www
