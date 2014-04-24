@@ -34,6 +34,64 @@ class apache2 {
     enable    => true
   }
   
+  File {
+    owner   => "root",
+    group   => "root",
+    mode    => 644,
+    require => Package["apache2"],
+    notify  => Service["apache2"]
+  }
+
+  package { "apache2-dev":
+    ensure  => present
+  }
+
+  file { "/etc/apache2/conf.d/vhost.conf":
+    replace => true,
+    ensure  => present,
+    source  => "/vagrant/files/apache2/conf.d/vhost.conf",
+  }
+  
+  file { "/etc/apache2/apache2.conf":
+    replace => true,
+    ensure  => present,
+    source  => "/vagrant/files/apache2/conf/apache2.conf",
+  }  
+
+  # Uncomment if you want to create these folders separately
+
+  file { "/etc/apache2/vhosts_ssl":
+    ensure => "directory",
+  }
+  file { "/vagrant/www":
+    ensure => "directory",
+  }
+  file { "/vagrant/www/drupal7.dev":
+    ensure  => "directory",
+  }
+  file { "/vagrant/www/drupal7.dev/docroot":
+    ensure => "directory",
+  }
+  file { "/vagrant/www/drupal7.dev/log":
+    ensure => "directory",
+  }  
+  file { "/vagrant/www/drupal8.dev":
+    ensure  => "directory",
+  }
+  file { "/vagrant/www/drupal8.dev/docroot":
+    ensure => "directory",
+  }
+  file { "/vagrant/www/drupal8.dev/log":
+    ensure => "directory",
+  }        
+
+  file { "/etc/apache2/vhosts":
+    replace => true,
+    ensure  => present,
+    source  => "/vagrant/files/apache2/vhosts",
+    recurse => true,
+  }
+  
 }
 
 class mysql {
@@ -46,6 +104,7 @@ class mysql {
   file { "/etc/mysql/my.cnf":
     replace => true,
     ensure  => present,
+    require => Package['mysql-server'],
     source  => "/vagrant/files/mysqld/my.cnf",
   }
 
