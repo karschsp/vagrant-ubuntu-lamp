@@ -1,5 +1,12 @@
 A very simple Vagrant LAMP setup for Drupal 7 development/testing.
 
+### Versions
+
+**OS:** Ubuntu 10.04
+**Apache:** Apache 2.2.14
+**PHP:** PHP 5.3.2
+**MySQL:** MySQL 5.1.73
+
 One vhost is created by default, drupal7.dev (make sure you add the following to your /etc/hosts file):
 
 ```
