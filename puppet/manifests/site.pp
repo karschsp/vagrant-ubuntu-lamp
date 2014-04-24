@@ -133,6 +133,9 @@ class mysql {
   package { "php5-gd":
     ensure => present
   }
+  package { "php5-mysql":
+    ensure => present
+  }
 }
 
 include base
