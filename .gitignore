@@ -1,4 +1,4 @@
 .vagrant
 .DS_Store
-files/httpd/vhosts/*.local.conf
+files/apache2/vhosts/*.local.conf
 www
