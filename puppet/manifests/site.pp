@@ -136,6 +136,9 @@ class mysql {
   package { "php5-mysql":
     ensure => present
   }
+  package { "libapache2-mod-php5":
+    ensure => present
+  }
 }
 
 include base
