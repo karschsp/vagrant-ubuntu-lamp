@@ -84,5 +84,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppet.manifest_file  = "site.pp"
   end
   
-  # config.vm.provision :shell, :path => "post_install.sh"
+  config.vm.provision :shell, :path => "post_install.sh"
 end
