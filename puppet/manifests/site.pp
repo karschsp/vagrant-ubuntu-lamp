@@ -21,6 +21,9 @@ class base {
   package { "telnet":
     ensure  => present,
   }  
+  package { "imagemagick":
+    ensure => present,
+  }
 }
 
 class apache2 {
