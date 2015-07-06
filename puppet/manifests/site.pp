@@ -49,10 +49,10 @@ class apache2 {
     ensure  => present
   }
 
-  file { "/etc/apache2/conf.d/vhost.conf":
+  file { "/etc/apache2/conf-available/vhost.conf":
     replace => true,
     ensure  => present,
-    source  => "/vagrant/files/apache2/conf.d/vhost.conf",
+    source  => "/vagrant/files/apache2/conf-available/vhost.conf",
   }
   
   file { "/etc/apache2/apache2.conf":
@@ -60,6 +60,11 @@ class apache2 {
     ensure  => present,
     source  => "/vagrant/files/apache2/conf/apache2.conf",
   }  
+  file { "/etc/apache2/httpd.conf":
+    replace => true,
+    ensure  => present,
+    source  => "/vagrant/files/apache2/conf/httpd.conf",
+  }    
 
   # Uncomment if you want to create these folders separately
 
